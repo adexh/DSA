@@ -107,4 +107,4 @@ function merge(nums, l, m, r) {
 ```
 
 
-![[Pasted image 20241107152728.png]]
+![[assets/Pasted image 20241107152728.png]]
