@@ -47,7 +47,7 @@ function bubbleSort(nums) {
 function insertionSort(nums) {
 	for(let i=1; i<nums.length; i++) {
 		for(let j=i; j>0; j--) {
-			if( nums[j-1] <= nums[j] ) break;
+			if( nums[j-1] <= nums[j] ) break; // Since its in correct position
 			swap(nums, j, j-1);
 		}
 	}
@@ -103,6 +103,58 @@ function merge(nums, l, m, r) {
         nums[k++] = rarr[rr++];
     }
 
+}
+```
+
+### Quick-Sort
+- Select a pivot, place it at its correct position, return the partition
+- user partition to sort the left and right array
+
+```Javascript
+class Solution {
+	
+    quickSort(nums) {
+        let n = nums.length;
+        this.qs(nums, 0, n - 1);
+        return nums;
+    }
+
+	// The quicksort helper function
+    qs( nums, low, high ) {
+    
+        if( low < high ) {
+	        // Get 
+            let pIndex = this.pivotSort(nums, low, high);
+            this.qs(nums, low, pIndex - 1);
+            this.qs(nums, pIndex + 1, high);
+        }
+    }
+
+  
+    pivotSort( nums, low, high ) {
+
+        let pivot = nums[low];
+        let i = low;
+        let j = high;
+
+        while( i<j ) {
+            while( i <= high-1 && nums[i] <= pivot ) {
+                i++;
+            }
+  
+            while( j>=low+1 && nums[j] > pivot  ){
+                j--;
+            }
+  
+            if( i<j ) {
+                [nums[i], nums[j]] = [nums[j], nums[i]];
+            }
+        }
+
+        [nums[low], nums[j]] = [nums[j], nums[low]];
+
+        return j;
+    }
 }
 ```
 
